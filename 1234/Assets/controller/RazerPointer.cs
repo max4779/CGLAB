@@ -18,17 +18,18 @@
  * limitations under the License.
  */
 
+using Oculus.Interaction.Input;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class OVRPointerVisualizer : MonoBehaviour
 {
-    [Header("Visual Elements")]
-    [Tooltip("Line Renderer used to draw selection ray.")]
+    
     public LineRenderer linePointer = null;
-
-    [Tooltip("Visually, how far out should the ray be drawn.")]
     public float rayDrawDistance = 2.5f;
+    public ChangeWallColor wallcolorscript;
+    public changequestion QuestionScript;
 
 
     void Update()
@@ -41,17 +42,31 @@ public class OVRPointerVisualizer : MonoBehaviour
     void Pointer(Ray ray)
     {
         RaycastHit hit;
-        if(Physics.Raycast(ray.origin, ray.direction, out hit, rayDrawDistance))
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, rayDrawDistance))
         {
             linePointer.enabled = (OVRInput.GetActiveController() == OVRInput.Controller.Touch);
             linePointer.SetPosition(0, ray.origin);
             linePointer.SetPosition(1, hit.point);
+            if ((OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch)) || (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))) 
+            {
+                if (hit.collider.CompareTag("WallColorButton"))
+                {
+                    wallcolorscript.TriggerOn(hit.collider);
+                }
+
+                if (hit.collider.CompareTag("QuestionButton")){
+                    QuestionScript.startQuestion();
+                }
+            }
         }
+
         else
         {
             linePointer.enabled = (OVRInput.GetActiveController() == OVRInput.Controller.Touch);
             linePointer.SetPosition(0, ray.origin);
             linePointer.SetPosition(1, ray.origin + ray.direction * rayDrawDistance);
+            linePointer.enabled = false;
+
         }
     }
 }
