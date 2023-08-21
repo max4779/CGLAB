@@ -412,6 +412,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/VoiceSDK.Runtime.ref.dll"
 -analyzer:"D:/Unity/Hub/Editor/2022.3.7f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"D:/Unity/Hub/Editor/2022.3.7f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/controller/RazerPointer.cs"
 "Assets/Oculus/SampleFramework/Core/CustomHands/Scripts/Hand.cs"
 "Assets/Oculus/SampleFramework/Core/CustomHands/Scripts/HandPose.cs"
 "Assets/Oculus/SampleFramework/Core/DebugUI/Scripts/DebugUIBuilder.cs"

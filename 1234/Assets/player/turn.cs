@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class turn : MonoBehaviour
 {
-    public float rotationSpeed = 1.0f; // 회전 속도
+    public float rotationSpeed = 10.0f; // 회전 속도
 
     private bool rightStick = false; // 오른쪽 컨트롤러 조이스틱 사용 여부
 
